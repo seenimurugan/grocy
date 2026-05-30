@@ -1,0 +1,123 @@
+# Grocy — self-hosted household inventory / pantry management
+# https://grocy.info
+#
+# Features fitting Nila's request:
+#  - Stock with quantities AND best-before dates (multiple instances per product)
+#  - "Expiring soon" / "expired" views
+#  - One-click consume to decrement stock
+#  - Mobile-friendly responsive web UI
+#  - Barcode scanning (works via phone camera)
+#  - SQLite DB stored in /config — no separate Postgres needed
+#
+# Default login on first start: admin / admin (change immediately)
+#
+# Template variables (filled by deploy.sh via envsubst):
+#   HOMELAB_NAMESPACE  — Kubernetes namespace (default: homelab)
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: grocy-data-pvc
+  namespace: ${HOMELAB_NAMESPACE}
+spec:
+  accessModes: [ReadWriteOnce]
+  storageClassName: local-path   # VM-internal ext4 — safe for SQLite
+  resources:
+    requests:
+      storage: 5Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grocy
+  namespace: ${HOMELAB_NAMESPACE}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: grocy
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: grocy
+    spec:
+      containers:
+        - name: grocy
+          image: lscr.io/linuxserver/grocy:latest
+          ports:
+            - containerPort: 80
+              name: http
+          env:
+            - name: TZ
+              value: "Europe/London"
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+          volumeMounts:
+            - name: data
+              mountPath: /config
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "50m"
+            limits:
+              memory: "1Gi"
+              cpu: "2"
+          startupProbe:
+            tcpSocket:
+              port: 80
+            initialDelaySeconds: 15
+            periodSeconds: 15
+            timeoutSeconds: 15
+            failureThreshold: 40
+          livenessProbe:
+            tcpSocket:
+              port: 80
+            initialDelaySeconds: 60
+            periodSeconds: 60
+            timeoutSeconds: 15
+            failureThreshold: 5
+          readinessProbe:
+            tcpSocket:
+              port: 80
+            initialDelaySeconds: 30
+            periodSeconds: 30
+            timeoutSeconds: 15
+            failureThreshold: 5
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: grocy-data-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: grocy
+  namespace: ${HOMELAB_NAMESPACE}
+spec:
+  type: ClusterIP
+  selector:
+    app: grocy
+  ports:
+    - port: 80
+      targetPort: http
+      name: http
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: grocy
+  namespace: ${HOMELAB_NAMESPACE}
+spec:
+  ingressClassName: tailscale
+  defaultBackend:
+    service:
+      name: grocy
+      port:
+        number: 80
+  tls:
+    - hosts:
+        - grocy
