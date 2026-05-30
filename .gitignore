@@ -3,3 +3,7 @@
 .env.*.local
 .DS_Store
 *.log
+.code-review-graph/
+graphify-out/cache/
+graphify-out/manifest.json
+graphify-out/cost.json
