@@ -4,6 +4,8 @@ For your wife (or anyone else who just wants to add stuff and track expiry). Ign
 
 URL: **https://grocy.stoat-perch.ts.net** (phone Safari works great).
 
+**On this page:** [0. First login (once)](#0-first-login-once) · [1. Add locations (one-time, 2 min)](#1-add-locations-one-time-2-min) · [2. Add a product (one-time per type of thing)](#2-add-a-product-one-time-per-type-of-thing) · [3. Add stock — when you buy something](#3-add-stock--when-you-buy-something) · [4. Consume — when you use something](#4-consume--when-you-use-something) · [5. See what's expiring or expired](#5-see-whats-expiring-or-expired) · [6. Barcode scanning (great on phone)](#6-barcode-scanning-great-on-phone) · [7. Shopping list (optional but useful)](#7-shopping-list-optional-but-useful) · [TL;DR — your wife's daily workflow](#tl;dr--your-wifes-daily-workflow) · [If something looks weird](#if-something-looks-weird)
+
 ---
 
 ## 0. First login (once)
