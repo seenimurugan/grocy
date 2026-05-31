@@ -1,5 +1,15 @@
 # Grocy — Architecture & Tech Stack
 
+## Deployment diagram
+
+```mermaid
+graph TD
+    A[Browser on Tailnet] -->|HTTPS| B[Tailscale Ingress\ngrocy.stoat-perch.ts.net]
+    B --> C[grocy Service\nport 80]
+    C --> D[Grocy Pod\nlscr.io/linuxserver/grocy]
+    D --> E[grocy-data-pvc\n5 Gi local-path ext4\nSQLite + config]
+```
+
 ## What is it
 
 [Grocy](https://grocy.info) is a self-hosted ERP for the kitchen — pantry inventory, expiry dates, recipes, shopping lists, equipment, batteries, chores.
