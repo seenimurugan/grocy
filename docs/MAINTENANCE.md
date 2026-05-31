@@ -1,5 +1,7 @@
 # Grocy — Deployment & Maintenance
 
+**On this page:** [Deploy / redeploy](#deploy--redeploy) · [Common operations](#common-operations) · [Credentials](#credentials) · [Backup](#backup) · [Restore](#restore) · [Troubleshooting](#troubleshooting)
+
 ## Deploy / redeploy
 
 Config at `~/homelab/grocy-server.yaml` — Deployment + Service + Ingress + PVC. Pre-built image `lscr.io/linuxserver/grocy:latest`.

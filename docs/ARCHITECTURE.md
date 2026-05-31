@@ -1,5 +1,7 @@
 # Grocy — Architecture & Tech Stack
 
+**On this page:** [Deployment diagram](#deployment-diagram) · [What is it](#what-is-it) · [Tech stack](#tech-stack) · [Source code](#source-code) · [Local config files](#local-config-files) · [Data layout](#data-layout) · [Why SQLite, not Postgres?](#why-sqlite-not-postgres) · [Why not a custom app?](#why-not-a-custom-app) · [Voice control integration](#voice-control-integration) · [Reference](#reference)
+
 ## Deployment diagram
 
 ```mermaid

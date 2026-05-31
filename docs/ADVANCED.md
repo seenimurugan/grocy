@@ -4,6 +4,8 @@ The [USAGE guide](USAGE.md) covers daily use. This page is the rest of Grocy's f
 
 URL: https://grocy.stoat-perch.ts.net
 
+**On this page:** [🍽 Recipes](#-recipes) · [📅 Meal planning](#-meal-planning) · [🛒 Shopping list (deeper than USAGE intro)](#-shopping-list-deeper-than-usage-intro) · [📜 Stock journal](#-stock-journal) · [🔋 Battery tracker](#-battery-tracker) · [🛠 Equipment](#-equipment) · [✅ Chores (Grocy's own)](#-chores-grocys-own) · [📋 Tasks](#-tasks) · [⚙ Settings worth knowing](#-settings-worth-knowing) · [🏷 Userfields & userentities (custom data)](#-userfields--userentities-custom-data) · [👥 Multi-user features](#-multi-user-features) · [🔌 API & integrations](#-api--integrations) · [📦 Master data — what each tab is for](#-master-data--what-each-tab-is-for) · [📊 Reports](#-reports) · [📱 Mobile apps (third-party)](#-mobile-apps-third-party) · [What I'd never bother with](#what-id-never-bother-with) · [More from Grocy](#more-from-grocy) · [TL;DR — the features that are actually worth your time](#tl;dr--the-features-that-are-actually-worth-your-time)
+
 ---
 
 ## 🍽 Recipes
